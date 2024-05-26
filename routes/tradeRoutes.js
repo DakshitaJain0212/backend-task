@@ -21,7 +21,6 @@ const upload = multer({
 
 router.route('/upload').post(upload.single('csvFile'), uploadCsv)
 
-
 router.route('/getbalance').post(getBalance);
 
 module.exports = router;
