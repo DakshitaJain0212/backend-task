@@ -1,0 +1,28 @@
+{
+    "builds": [
+      {
+        "src": "index.js",
+        "use": "@vercel/node"
+      }
+    ],
+    "routes" : [
+        {
+            "src": "/api/trades/upload",
+            "dest": "/api/trades/upload"
+          },
+        {
+            "src": "/api/trades/getbalance",
+            "dest":"index.js"
+        },
+        {
+            "src": "/api/trades/getbalance/(.*)",
+            "dest": "index.js"
+        }, 
+        {
+            "src": "/(.*)",
+            "dest": "/" 
+        }
+      
+    ]
+  }
+  
