@@ -4,7 +4,7 @@ const app = express();
 const emailRoutes = require('./routes/emailRoutes');
 
 app.use(express.json());
-app.use('/api/email', emailRoutes);
+app.use('/email', emailRoutes);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
