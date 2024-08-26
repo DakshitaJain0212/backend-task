@@ -1,31 +1,45 @@
-## API Endpoints
+# Resilient Email Service
 
-### 1. Upload CSV File
+## Overview
 
-- *Endpoint*: POST /api/trades/upload
-- *Form-data*: CsvFile (select CSV file to upload)
+This project implements a resilient email sending service using Node.js, Nodemailer, and Express.js. It features retry logic with exponential backoff, fallback between providers, idempotency, rate limiting, and basic status tracking. The implementation follows SOLID principles and includes a simple logging mechanism and a Circuit Breaker pattern.
 
-### 2. Get Balance
+## Features
 
-- *Endpoint*: POST /api/trades/getbalance
-- *JSON Body*:
-  json
-  {
-    "timestamp": "YYYY-MM-DD HH:mm:ss"
-  }
-  
+- **Retry Mechanism**: Automatically retries sending emails with a configurable retry limit.
+- **Fallback Mechanism**: Switches between multiple email providers on failure.
+- **Idempotency**: Prevents duplicate email sends using a unique ID.
+- **Rate Limiting**: Limits the number of email requests per IP address.
+- **Status Tracking**: Logs successes and failures for monitoring.
 
-## Example CSV File Format
+## Prerequisites
 
+- Node.js (version 14.x or later)
+- npm (Node Package Manager)
 
-UTC_Time,Operation,Market,Buy/Sell Amount,Price
-2022-09-28 12:00:00,BUY,BTC/USD,1.5,45000
-2022-09-28 12:05:00,SELL,BTC/USD,0.5,46000
+## Setup Instructions
 
+1. **Clone the Repository**
 
-## Testing the APIs
+   Clone the repository to your local machine:
 
-Use Postman or a similar tool to test the APIs:
+   ```bash
+   git clone <repository-url>
+   cd email-service
 
-1. *Upload CSV File*: POST /api/trades/upload
-2. *Get Balance*: POST /api/trades/getbalance
+## 'req.body' Format
+When submitting the email form, the req.body should be structured as follows:
+
+to: The recipient's email address. (Type: string, Format: email address)
+subject: The subject of the email. (Type: string)
+text: The body text of the email. (Type: string)
+emailId: A unique identifier for the email to prevent duplicate sends. (Type: string, e.g., timestamp or UUID)
+
+# Example of a req.body object:
+
+{
+  "to": "recipient@example.com",
+  "subject": "Test Email",
+  "text": "This is a test email message.",
+  "emailId": "1633024800000"
+}
