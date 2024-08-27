@@ -52,8 +52,8 @@ This project implements a resilient email sending service using Node.js, Nodemai
    }
    ```
 
-  <img src="./images/code.png" alt="code Example" width="300px" height="400px">
+  <img src="./images/code.png" alt="code Example">
 
 ## Result 
 
-<img src="./images/result.png" alt="code Example" width="300px" height="400px">
+<img src="./images/result.png" alt="code Example">
