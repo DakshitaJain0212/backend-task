@@ -19,27 +19,41 @@ This project implements a resilient email sending service using Node.js, Nodemai
 
 ## Setup Instructions
 
-1. **Clone the Repository**
+1. **API Endpoint**
 
-   Clone the repository to your local machine:
+   Use the following endpoint to send an email:
 
-   ```bash
-   git clone <repository-url>
-   cd email-service
+   - **Endpoint**: `https://email-service-01.vercel.app/email/send`
+   - **Method**: `POST`
+   - **Content-Type**: `application/json`
 
-## 'req.body' Format
-When submitting the email form, the req.body should be structured as follows:
+2. **Request Body Format**
 
-to: The recipient's email address. (Type: string, Format: email address)
-subject: The subject of the email. (Type: string)
-text: The body text of the email. (Type: string)
-emailId: A unique identifier for the email to prevent duplicate sends. (Type: string, e.g., timestamp or UUID)
+   When submitting the email form, the `req.body` should be structured as follows:
 
-# Example of a req.body object:
+   - **to**: The recipient's email address.  
+     **Type**: `string`  
+     **Format**: email address
+   - **subject**: The subject of the email.  
+     **Type**: `string`
+   - **text**: The body text of the email.  
+     **Type**: `string`
+   - **emailId**: A unique identifier for the email to prevent duplicate sends.  
+     **Type**: `string` (e.g., timestamp or UUID)
 
-{
-  "to": "recipient@example.com",
-  "subject": "Test Email",
-  "text": "This is a test email message.",
-  "emailId": "1633024800000"
-}
+   ### Example of `req.body` object:
+
+   ```json
+   {
+     "to": "recipient@example.com",
+     "subject": "Test Email",
+     "text": "This is a test email message.",
+     "emailId": "1633024800000"
+   }
+   ```
+
+  <img src="./images/code.png" alt="code Example" width="300px" height="400px">
+
+## Result 
+
+<img src="./images/result.png" alt="code Example" width="300px" height="400px">
